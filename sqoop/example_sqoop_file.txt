@@ -1,0 +1,46 @@
+# Options file for SQOOP
+# The tool
+ 
+import
+ 
+# ORACLE Connect data
+--connect
+jdbc:oracle:thin:@p260unc4:1566:uncunc
+ 
+# Credentials
+--username
+user
+--password
+password
+ 
+# Исходная таблица
+--table
+UNICUS_B.CONTRACT_STATUS
+ 
+--columns
+CONTRACT_STATUS_ID , CONTRACT_STATUS_DATE , CONTRACT_STATUS_TYPE_ID , CONTRACT_ID
+ 
+# Можно указать ограничение - любой корректный SQL 
+#--where
+#rownum<=1000
+ 
+# HIVE options
+--hive-import
+--hive-overwrite
+--hive-drop-import-delims
+--hive-table
+contract_status
+ 
+# HIVE connect data
+--hs2-url
+jdbc:hive2://z14-1021-hdp.vesta.ru:10000
+ 
+# временная папка
+--target-dir
+/tmp/contract_status
+ 
+# параллелизм
+--split-by
+CONTRACT_STATUS_ID
+--num-mappers
+32
